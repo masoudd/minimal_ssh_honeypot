@@ -1,0 +1,6 @@
+.envrc
+tmp
+data
+host.key*
+./sshoney
+.*.swp
