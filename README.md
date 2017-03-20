@@ -1,5 +1,5 @@
-minimal_ssh_honeypot
-=======
+Minimal SSH Honeypot
+====================
 
 This is a SSH honeypot designed to only log the SSH connection attempts on a given port.  It
 does not go any further than that and that's by design.
@@ -11,6 +11,8 @@ How?
 
 It works by listening on a non-privileged port (2222 by default) and pretends to be an SSH
 server.  When an SSH client connects, it logs the connection details (IP, username, password and SSH clienr version) to stdout and then rejects the login attempt.
+
+run with --help to see available flags and their default values.
 
 Basic setup
 -----------
@@ -71,7 +73,6 @@ The honey pot listens on port 2222 by default. This can be changed with the -por
 Once you have it running (ideally as the least privileged user, e.g. `nobody`) it's time to setup an IPTables rule to redirect the traffic.
 Change _eth0_ to the interface you want to use.
 
-==========================================================================================
 WARNING: Please, please be very careful when adding this rule you don't lock yourself out!
 ==========================================================================================
 
