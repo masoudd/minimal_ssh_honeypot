@@ -1,3 +1,5 @@
+![Go](https://github.com/masoudd/minimal_ssh_honeypot/workflows/Go/badge.svg?branch=master)
+
 Minimal SSH Honeypot
 ====================
 
