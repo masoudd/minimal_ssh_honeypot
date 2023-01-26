@@ -11,7 +11,7 @@ import (
 	"golang.org/x/crypto/ssh"
 )
 
-const version = 0.1
+const version = 0.2
 
 var (
 	print_version = flag.Bool("version", false, "Print the version and exit")
