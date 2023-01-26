@@ -14,7 +14,7 @@ import (
 const version = 0.1
 
 var (
-	print_version = flag.Bool("Version", false, "Print the version and exit")
+	print_version = flag.Bool("version", false, "Print the version and exit")
 	port          = flag.Int("port", 2222, "Port to listen on")
 	hostKey       = flag.String("hostkey", "host.key", "SSH private host key")
 )
@@ -52,7 +52,7 @@ func main() {
 	flag.Parse()
 
 	if *print_version {
-		log.Printf("Version: %v", version)
+		log.Printf("version: %v", version)
 		return
 	}
 	config := setupSSHConfig()
