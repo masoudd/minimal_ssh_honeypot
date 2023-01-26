@@ -19,10 +19,10 @@ run with --help to see available flags and their default values.
 Basic setup
 -----------
 
-Install the source and binary:
+Install the binary:
 
 ```shell
-go get -u github.com/masoudd/minimal_ssh_honeypot
+go install github.com/masoudd/minimal_ssh_honeypot
 ```
 
 Ensure `${GOPATH}/bin` is in your `${PATH}` (so you can run `minimal_ssh_honeypot` from any directory):
