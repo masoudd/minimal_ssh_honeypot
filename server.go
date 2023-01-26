@@ -26,7 +26,7 @@ func setupSSHConfig() *ssh.ServerConfig {
 
 		PasswordCallback: func(c ssh.ConnMetadata, pass []byte) (*ssh.Permissions, error) {
 			remoteAddr := c.RemoteAddr().String()
-			ip := remoteAddr[0:strings.Index(remoteAddr, ":")]
+			ip := remoteAddr[0:strings.LastIndex(remoteAddr, ":")]
 			log.Printf("SSH connection from ip=[%s], username=[%s], password=[%s], version=[%s]", ip, c.User(), pass, c.ClientVersion())
 			return nil, fmt.Errorf("invalid credentials")
 		},
