@@ -52,7 +52,7 @@ func main() {
 	flag.Parse()
 
 	if *print_version {
-		log.Printf("Version: %v\n", version)
+		log.Printf("Version: %v", version)
 		return
 	}
 	config := setupSSHConfig()
@@ -61,7 +61,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("failed to listen on *:%v", *port)
 	}
-	log.Printf("listening on %v\n", *port)
+	log.Printf("listening on %v", *port)
 	processConnections(config, listener)
 
 }
@@ -70,7 +70,7 @@ func processConnections(sshConfig *ssh.ServerConfig, listener net.Listener) {
 	for {
 		tcpConn, err := listener.Accept()
 		if err != nil {
-			log.Printf("failed to accept incoming connection (%v)\n", err)
+			log.Printf("failed to accept incoming connection (%v)", err)
 			continue
 		}
 		go handleConnection(sshConfig, tcpConn)
@@ -82,7 +82,7 @@ func handleConnection(sshConfig *ssh.ServerConfig, tcpConn net.Conn) {
 
 	sshConn, _, _, err := ssh.NewServerConn(tcpConn, sshConfig)
 	if err != nil {
-		log.Printf("failed to handshake (%v)\n", err)
+		log.Printf("failed to handshake (%v)", err)
 	} else {
 		sshConn.Close()
 	}
