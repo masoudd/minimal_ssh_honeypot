@@ -52,13 +52,18 @@ func setupSSHConfig() *ssh.ServerConfig {
 
 func main() {
 	flag.Parse()
+
+	if *print_version {
+		log.Printf("Version: %v\n", version)
+		return
+	}
 	config := setupSSHConfig()
 	portComplete := fmt.Sprintf(":%v", *port)
 	listener, err := net.Listen("tcp", portComplete)
 	if err != nil {
 		log.Fatalf("failed to listen on *:%v", *port)
 	}
-	log.Printf("listening on %v", *port)
+	log.Printf("listening on %v\n", *port)
 	processConnections(config, listener)
 
 }
@@ -67,7 +72,7 @@ func processConnections(sshConfig *ssh.ServerConfig, listener net.Listener) {
 	for {
 		tcpConn, err := listener.Accept()
 		if err != nil {
-			log.Println("failed to accept incoming connection (%v)", err)
+			log.Printf("failed to accept incoming connection (%v)\n", err)
 			continue
 		}
 		go handleConnection(sshConfig, tcpConn)
